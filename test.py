@@ -4,6 +4,8 @@ import psutil
 import os
 
 processName = "AutoHotkey.exe"
+ahkPath = "C:\Program Files\AutoHotkey\AutoHotkey.exe"
+
 filename = "test"
 filesToRun = []
 fileId = 0
@@ -36,11 +38,5 @@ if isRunning(processName):
             file.write(f"{' '.join(line)} \n")
 
     for file in filesToRun:
-        subprocess.call(["C:\Program Files\AutoHotkey\AutoHotkey.exe", f"{file}"])
-else: print(1)
-
-
-
-print(filesToRun)
-print(fileId)
-    
+        subprocess.call([ahkPath, f"{file}"])
+else: subprocess.call([ahkPath, f"{filename}.ahk"])
