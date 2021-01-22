@@ -3,14 +3,14 @@ import subprocess
 import psutil
 import os
 
-processName = "AutoHotkey.exe"
-ahkPath = "C:\Program Files\AutoHotkey\AutoHotkey.exe"
+processName: str = "AutoHotkey.exe"
+ahkPath: str = "C:\Program Files\AutoHotkey\AutoHotkey.exe"
 
-filename = "test"
-filesToRun = []
-fileId = 0
+filename: str = "test"
+filesToRun: List[str] = []
+fileId: int = 0
 
-def isRunning(process_name: str):
+def isRunning(process_name: str) -> bool:
     return True if process_name in [process.name() for process in psutil.process_iter()] else False
  
 for file in os.listdir():
@@ -21,7 +21,7 @@ for file in os.listdir():
         filesToRun.append(file)
 
 if isRunning(processName):
-    output = []
+    output: List[str] = []
     with open(f"{filename}.ahk", "r") as file:
         for line in file.readlines():
             line = line.replace("\n", "").split()
